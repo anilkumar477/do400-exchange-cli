@@ -21,10 +21,6 @@ pipeline{
             }
         }
 
-        pipeline{
-    agent any
-
-    stages{
         stage('Deploy') {
             steps {
                 sh '''
@@ -37,5 +33,3 @@ pipeline{
 }
 
         // Add the "Deploy" stage here
-    }
-}
