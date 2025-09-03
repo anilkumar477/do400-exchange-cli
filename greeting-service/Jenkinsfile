@@ -21,6 +21,21 @@ pipeline{
             }
         }
 
+        pipeline{
+    agent any
+
+    stages{
+        stage('Deploy') {
+            steps {
+                sh '''
+                    oc project shigveR-deploy-strategies
+                    oc start-build greeting-service --follow --wait
+                '''
+            }
+        }
+    }
+}
+
         // Add the "Deploy" stage here
     }
 }
