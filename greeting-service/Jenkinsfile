@@ -31,7 +31,7 @@ pipeline{
             steps {
                 dir('greeting-service'){
                 sh '''
-                    oc project shigveR-deploy-strategies
+                    oc project shigve-deploy-strategies
                     oc start-build greeting-service --follow --wait
                 '''
             }
