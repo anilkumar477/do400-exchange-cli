@@ -13,22 +13,28 @@ pipeline{
 
         stage("Check Style"){
             steps{
+                dir('greeting-service'){
                 sh "npm run lint"
+                }
             }
         }
 
         stage("Test"){
             steps{
+                dir('greeting-service'){
                 sh "npm test"
+                }
             }
         }
 
         stage('Deploy') {
             steps {
+                dir('greeting-service'){
                 sh '''
                     oc project shigveR-deploy-strategies
                     oc start-build greeting-service --follow --wait
                 '''
+            }
             }
         }
     }
